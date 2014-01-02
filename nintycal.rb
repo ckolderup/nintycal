@@ -1,3 +1,5 @@
+require 'twitter'
+
 templates = [
     "My uncle works at Nintendo and he said %d is the year of %s.",
     "OPINION: is %d the Year of %s?",
@@ -14,4 +16,11 @@ templates = [
 character = File.readlines(Dir.glob('./*.txt').to_a.sample).sample.chomp
 year = Time.now.year + rand(1..2000)
 
-puts templates.sample % [year, character]
+Twitter.configure do |config|
+    config.consumer_key       = ENV['TWITTER_CONSUMER_KEY']
+    config.consumer_secret    = ENV['TWITTER_CONSUMER_SECRET']
+    config.oauth_token        = ENV['TWITTER_OAUTH_TOKEN']
+    config.oauth_token_secret = ENV['TWITTER_OAUTH_SECRET']
+end
+
+Twitter.update(templates.sample % [year, character])
