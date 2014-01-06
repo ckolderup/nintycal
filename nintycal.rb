@@ -14,7 +14,7 @@ templates = [
 ]
 
 character = File.readlines(Dir.glob('./*.txt').to_a.sample).sample.chomp
-year = Time.now.year + rand(1..2000)
+year = Time.now.year + rand(1..50)
 
 Twitter.configure do |config|
     config.consumer_key       = ENV['TWITTER_CONSUMER_KEY']
