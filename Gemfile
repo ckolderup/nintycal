@@ -1,5 +1,5 @@
-ruby '2.0.0'
+ruby '2.2.2'
 source 'http://rubygems.org'
 
 gem 'foreman'
-gem 'twitter', '~> 4.0'
+gem 'twitter', '~> 5.0'
